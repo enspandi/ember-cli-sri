@@ -22,6 +22,9 @@ module.exports = {
 
     if ('fingerprint' in app.options && 'prepend' in app.options.fingerprint) {
       this.options.prefix = app.options.fingerprint.prepend;
+      if (app.options.rootURL) {
+        this.options.prefix = this.options.prefix.replace(/\/$/, '') + app.options.rootURL;
+      }
     }
 
     if (app.options.origin) {
